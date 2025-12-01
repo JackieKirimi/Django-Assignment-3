@@ -6,11 +6,10 @@ from .models import City
 
 
 # Create your views here.
-def City(request):
+def city_home(request):
   return HttpResponse("Welcome to my City")
 
 def home(request):
-    
     return redirect('fetchAll')
     
 
@@ -26,16 +25,16 @@ def createCity(request):
 
 
 def fetchAllCity(request):
-    Cities = City.objects.all()
-    context = {"city": City}
+    cities = City.objects.all()
+    context = {"cities": cities}
     return render(request, "city.html", context)
 
 
 def City_detail(request, pk): 
-     city= get_object_or_404(city, pk=pk)
+    city = get_object_or_404(City, pk=pk)
     # provide both keys to be tolerant of templates
-     context = {"City": City, "City": City}
-     return render(request, 'city_details.html', context)
+    context = {"city": city}
+    return render(request, 'city_details.html', context)
 
 
 def updateCity(request, pk):
@@ -49,8 +48,8 @@ def updateCity(request, pk):
 
 
 def deleteCity(request, pk):
-    animal = get_object_or_404(City, pk=pk)
+    city = get_object_or_404(City, pk=pk)
     if request.method == 'POST':
-        City.delete()
+        city.delete()
         return redirect('fetchAll')
-    return render(request, 'city_confirm_delete.html', {'City': City})
+    return render(request, 'city_confirm_delete.html', {'city': city})
