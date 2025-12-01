@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title mb-0">{{ City.name }}</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <p><strong>Population:</strong> <span class="badge bg-info">{{ city.population }}</span></p>
+                        <p><strong>Area:</strong> <span class="badge bg-warning">{{ city.area }} square kilometers</span></p>
+                        <p><strong>Description:</strong> <span class="badge bg-secondary">{{ city.description }}</span></p>
+                    </div>
+                    <hr>
+                    <div class="d-flex gap-2">
+                        <a href="{% url 'update-city' city.pk %}" class="btn btn-warning btn-sm flex-grow-1">Edit</a>
+                        <a href="{% url 'delete-city' city.pk %}" class="btn btn-danger btn-sm flex-grow-1">Delete</a>
+                        <a href="{% url 'fetchAll' %}" class="btn btn-secondary btn-sm flex-grow-1">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

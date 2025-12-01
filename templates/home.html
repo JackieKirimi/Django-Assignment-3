@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="my-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Welcome to our City</h1>
+        <div>
+            <a href="{% url 'create-city' %}" class="btn btn-primary">Add City</a>
+        </div>
+    </div>
+
+    {% if cities %}
+    <h3>City</h3>
+    {% for City in cities %}
+    <div class="card mb-3 p-3">
+        <div class="d-flex justify-content-between align-items-start">
+            <div>
+                <h4>{{ City.name }}</h4>
+
+                <p class="mb-1">{{ City.description }}</p>
+                <div class="badge bg-dark"> {{ City.area}}square kilometers</div>
+            </div>
+            <div>
+                <a href="{% url 'city-detail' city.pk %}" class="btn btn-sm btn-info">View</a>
+                <a href="{% url 'update-city' city.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'delete-city' city.pk %}" class="btn btn-sm btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+     {% if not cities %}
+    <p>No city yet. Use the buttons above to add a city.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}
+

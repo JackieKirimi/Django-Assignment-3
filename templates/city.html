@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="display-4">Welcome to My City</h1>
+            <p class="lead text-muted">Where you belong.</p>
+        </div>
+        <div class="col-md-4 text-end">
+            <a href="{% url 'create-animals' %}" class="btn btn-success btn-lg">+ Add New City</a>
+        </div>
+    </div>
+    <hr class="my-4">
+    
+    {% if animals %}
+    <div class="row">
+        {% for City in Cities %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm" style="transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div class="card-body">
+                    <h5 class="card-title">{{ city.name }}</h5>
+                    <p class="card-text text-muted"><strong>Population:</strong> {{ city.population }}</p>
+                    <p class="card-text"><strong>Area:</strong> {{ city.area }} square kilometers</p>
+                    <p class="card-text"><strong>Description:</strong> {{ city.description}}</p>
+                </div>
+                <div class="card-footer bg-light border-top-0">
+                    <a href="{% url 'city-detail' city.id %}" class="btn btn-info btn-sm w-100">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center py-5">
+        <p class="mb-3">No city yet. Start by adding your first city!</p>
+        <a href="{% url 'create-animals' %}" class="btn btn-success btn-lg">+ Add First City</a>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
