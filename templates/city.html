@@ -3,18 +3,18 @@
 <div class="container mt-5">
     <div class="row mb-4">
         <div class="col-md-8">
-            <h1 class="display-4">Welcome to My City</h1>
-            <p class="lead text-muted">Where you belong.</p>
+            <h1 class="display-4">Welcome to My Cities</h1>
+            <p class="lead text-muted">Explore cities around the world.</p>
         </div>
         <div class="col-md-4 text-end">
-            <a href="{% url 'create-animals' %}" class="btn btn-success btn-lg">+ Add New City</a>
+            <a href="{% url 'create-city' %}" class="btn btn-success btn-lg">+ Add New City</a>
         </div>
     </div>
     <hr class="my-4">
     
-    {% if animals %}
+    {% if cities %}
     <div class="row">
-        {% for City in Cities %}
+        {% for city in cities %}
         <div class="col-md-6 col-lg-4 mb-4">
             <div class="card h-100 shadow-sm" style="transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                 <div class="card-body">
@@ -33,7 +33,7 @@
     {% else %}
     <div class="alert alert-info text-center py-5">
         <p class="mb-3">No city yet. Start by adding your first city!</p>
-        <a href="{% url 'create-animals' %}" class="btn btn-success btn-lg">+ Add First City</a>
+        <a href="{% url 'create-city' %}" class="btn btn-success btn-lg">+ Add First City</a>
     </div>
     {% endif %}
 </div>
